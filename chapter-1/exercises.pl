@@ -1,4 +1,5 @@
-%% chapter-1-exercises.pl
+%% Chapter 1 - Exercises
+%%
 %% author: Peter Urbak
 %% version: 2012-10-04
 
@@ -97,5 +98,3 @@ hasBroom(X) :- quidditchPlayer(X).
 %% 5. wizard(harry). -> true
 %% 6. wizard(Y). -> Y = ron ; Y = harry.
 %% 7.witch(Y). -> undefined procedure
-
-%% end-of-chapter-1-exercises.pl
