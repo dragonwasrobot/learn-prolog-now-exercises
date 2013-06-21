@@ -10,6 +10,12 @@ Striegnitz.
 
 - **Author:** Peter Urbak, peter@dragonwasrobot.com
 - **Created:** 2012-07-01
-- **Last Modified:** 2012-10-04
+- **Last Modified:** 2013-06-21
 - **URL:** https://github.com/dragonwasrobot/learn-prolog-now-exercises
 - **License:** Gnu General Public License
+
+## TODO
+
+- Finish any unsolved exercises/practical sessions.
+- Proof read and check all the exercises + practical sessions.
+- Add better documentation of the project.
