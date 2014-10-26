@@ -45,7 +45,7 @@ min(List, Min) :-
 scalarmult(Alpha, [], []).
 %% inductive case
 scalarmult(Alpha, [H1|T1], [H2|T2]) :-
-  is(H2,*(H1,3)),
+  is(H2,*(H1,Alpha)),
   scalarmult(Alpha, T1, T2).
 
 %% 3. Another fundamental operation on vectors is the dot product. This
