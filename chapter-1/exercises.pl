@@ -76,8 +76,8 @@ kills(marcellus, X) :- givesFootMassage(X, mia).
 loves(mia, X) :- goodDancer(X).
 
 %% 6. Jules eats anything that is nutritious or tasty.
-eats(Jules, X) :- nutritious(X).
-eats(Jules, X) :- tasty(X).
+eats(jules, X) :- nutritious(X).
+eats(jules, X) :- tasty(X).
 
 %% Exercise 1.5
 
