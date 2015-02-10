@@ -29,7 +29,7 @@ in(X,Y) :-
 %% ?- greater_than(succ(succ(0)),succ(succ(succ(0)))). -> no
 
 greater_than(succ(X),0).
-greater_than(X,succ(Y)) :-
+greater_than(succ(X),succ(Y)) :-
   greater_than(X,Y).
 
 %% Exercise 3.3
