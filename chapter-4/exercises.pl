@@ -15,7 +15,27 @@
 %% [] = [_]. -> false
 %% [] = [_|[]]. -> false
 
-%% Exercise 4.2
+%%Exercise  4.2 Which of the following are syntactically correct lists? 
+%%If the representation is correct, how many elements does the list have?
+
+%%[1|[2,3,4]]
+%%[1,2,3|[]] 
+%%[1|2,3,4]
+%%[1|[2|[3|[4]]]]
+%%[1,2,3,4|[]]
+%%[[]|[]]
+%%[[1,2]|4]
+%%[[1,2],[3,4]|[5,6,7]]
+
+%%Exercise  4.3 Write a predicate second(X,List) which checks whether X is the second element of List .
+second(X,List) :- List = [_,X|_].
+
+%%4.4 Write a predicate swap12(List1,List2) which checks whether List1 is identical to List2 ,
+%%except that the first two elements are exchanged.
+
+swap12(L1,L2) :- L1 = [L1a,L1b|_], L2 = [L1b,L1a|_]. 
+
+%% Exercise 4.5
 %% Suppose we are given a knowledge base with the following facts:
 
 tran(eins,one).
@@ -52,7 +72,7 @@ listtran([Hg | Tg], [He | Te]) :-
   tran(Hg, He),
   listtran(Tg, Te).
 
-%% Exercise 4.3
+%% Exercise 4.6
 
 %% Write a predicate twice(In,Out) whose left argument is a list, and whose
 %% right argument is a list consisting of every element in the left list written
@@ -73,7 +93,7 @@ listtran([Hg | Tg], [He | Te]) :-
 twice([],[]).
 twice([Ha | Ta], [Ha, Ha | Tb]) :- twice(Ta, Tb).
 
-%% Exercise 4.4
+%% Exercise 4.7
 %% Draw the search trees for the following three queries:
 %% ?- member(a,[c,b,a,y]).
 %% ?- member(x,[a,b,c]).
