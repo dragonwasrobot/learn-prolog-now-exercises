@@ -18,14 +18,14 @@
 %%Exercise  4.2 Which of the following are syntactically correct lists? 
 %%If the representation is correct, how many elements does the list have?
 
-%%[1|[2,3,4]]
-%%[1,2,3|[]] 
-%%[1|2,3,4]
-%%[1|[2|[3|[4]]]]
-%%[1,2,3,4|[]]
-%%[[]|[]]
-%%[[1,2]|4]
-%%[[1,2],[3,4]|[5,6,7]]
+%%[1|[2,3,4]]               correct - 4 elements 
+%%[1,2,3|[]]                correct - 3 elements
+%%[1|2,3,4]                 syntactically incorrect
+%%[1|[2|[3|[4]]]]           correct - 4 elements
+%%[1,2,3,4|[]]              correct - 4 elements
+%%[[]|[]]                   correct - 1 element
+%%[[1,2]|4]                 syntactically incorrect
+%%[[1,2],[3,4]|[5,6,7]]     correct - 5 elements
 
 %%Exercise  4.3 Write a predicate second(X,List) which checks whether X is the second element of List .
 second(X,List) :- List = [_,X|_].
