@@ -27,14 +27,14 @@
 
 %% loves(Vincent,mia) - complex term, functor: loves, arity: 2
 %% 'loves(Vincent,mia)' - atom
-%% Butch(boxer) - neither
+%% Butch(boxer) - not a term
 %% boxer(Butch) - complex term, functor: boxer, arity: 1
 %% and(big(burger),kahuna(burger)) - complex term, functor: and, arity: 2
 %% and(big(X),kahuna(X)) - complex term, functor: and, arity: 2
-%% _and(big(X),kahuna(X)) - variable
-%% (Butch kills Vincent) - neither
-%% kills(Butch Vincent) - complex term, functor: kills, arity: 2
-%% kills(Butch,Vincent - neither
+%% _and(big(X),kahuna(X)) - not a term
+%% (Butch kills Vincent) - not a term
+%% kills(Butch Vincent) - not a term
+%% kills(Butch,Vincent - not a term
 
 %% Exercise 1.3
 
