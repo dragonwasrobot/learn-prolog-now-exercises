@@ -8,47 +8,10 @@
 %% other hand, [foo,gubble,foo] is not doubled. Write a predicate doubled(List)
 %% which succeeds when List is a doubled list.
 
-%% Helper functions
 
-%% equal
-%% base case
-equal([],[]).
-
-%% inductive case
-equal([H1|T1], [H1|T2]) :- equal(T1,T2).
-
-%% prefix
-prefix(P,L) :- append(P,_,L).
-
-%% suffix
-suffix(S,L) :- append(_,S,L).
-
-%% split
-
-%% accSplit([Head|Tail], Prefix, Suffix).
-%% It is quite inefficient since it has to compute all lengths and for recursion
-%% and also check if the two lists are prefix/suffix.
-%% recursion.
-
-%% base case
-split([],[],[]).
-
-%% inductive case
-split(List, Prefix, Suffix) :-
-  prefix(Prefix,List),
-  suffix(Suffix,List),
-  length(List, LLength),
-  length(Prefix, PLength),
-  length(Suffix, SLength),
-  PLength is SLength,
-  LLength is PLength + SLength.
-
-%% Actual function
 
 %% doubled
-doubled(List) :-
-  split(List,X,Y),
-  equal(X,Y).
+doubled(List) :- append(X, X, List).
 
 %% Exercise 6.2
 
@@ -66,12 +29,6 @@ doubled(List) :-
 
 %% Helper functions
 
-%% equal
-%% base case
-equal([],[]).
-%% inductive case
-equal([H1|T1], [H1|T2]) :- equal(T1,T2).
-
 %% reverse
 %% base case
 accRev([],A,A).
@@ -85,8 +42,7 @@ rev(L,R) :- accRev(L,[],R).
 %% palindrome
 %% main
 palindrome(List) :-
-  rev(List, RevList),
-  equal(List, RevList).
+  rev(List, List).
 
 %% Exercise 6.3
 
@@ -98,18 +54,10 @@ second(X, [Y, X | List]).
 %% 2. Write a predicate swap12(List1,List2) which checks whether List1 is
 %% identical to List2, except that the first two elements are exchanged.
 
-%% Helper function
-
-%% equal
-%% base case
-equal([],[]).
-%% inductive case
-equal([H1|T1], [H1|T2]) :- equal(T1,T2).
 
 %% Actual function
 swap12([],[]).
-swap12([X, Y | List1], [Y, X | List2]) :-
-  equal(T1,T2).
+swap12([X, Y | List], [Y, X | List]).
 
 %% 3. Write a predicate final(X,List) which checks whether X is the last element
 %% of List.
@@ -145,27 +93,8 @@ final(X,List) :-
 
 %% Hint: here's where append comes in useful.
 
-%% Helper function
-
-%% reverse
-%% base case
-accRev([],A,A).
-%% inductive case
-accRev([H|T],A,R) :- accRev(T,[H|A],R).
-%% main
-rev(L,R) :- accRev(L,[],R).
-
-%% Actual function
-
-%% toptail(InList, Outlist)
-toptail(Inlist,Outlist) :-
-  length(Inlist, InlistLength),
-  InlistLength >= 2,
-  chopOffEnds(Inlist,Outlist).
-
-chopOffEnds([_|T],Outlist) :-
-  rev(T, [_|RevOutlist]),
-  rev(RevOutlist,Outlist).
+toptail(InList, OutList):-
+    append([_|OutList],[_], InList).
 
 %% 5. Write a predicate swapfl(List1,List2) which checks whether List1 is
 %% identical to List2, except that the first and last elements are
