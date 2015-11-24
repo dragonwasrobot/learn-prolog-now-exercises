@@ -92,9 +92,9 @@ hasBroom(X) :- quidditchPlayer(X).
 %% How does Prolog respond to the following queries?
 
 %% 1. wizard(ron). -> true
-%% 2. witch(ron). -> false
+%% 2. witch(ron). -> undefined procedure
 %% 3. wizard(hermione). -> false
-%% 4. witch(hermione). -> false
+%% 4. witch(hermione). -> undefined procedure
 %% 5. wizard(harry). -> true
 %% 6. wizard(Y). -> Y = ron ; Y = harry.
 %% 7.witch(Y). -> undefined procedure
