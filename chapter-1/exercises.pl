@@ -56,6 +56,16 @@
 %% clauses: 7
 %% predicates: 7
 
+%% The commas in the goals column are not logical `AND`s, they are just
+%% delimiting the separate goals of a rule.
+
+%% |     Head     |         Goals          |
+%% |--------------|------------------------|
+%% | person(X)    | man(X), woman(X)       |
+%% | loves(X, Y)  | father(X, Y)           |
+%% | father(Y, Z) | man(Y), son(Z, Y)      |
+%% | father(Y, Z) | man(Y), daughter(Z, Y) |
+
 %% Exercise 1.4
 
 %% Represent the following in Prolog:
