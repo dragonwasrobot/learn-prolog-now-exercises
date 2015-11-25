@@ -51,7 +51,21 @@ magic(X) :- witch(X).
 
 %% Draw the search tree for the fifth query magic(Hermione).
 
-%% (picture).
+%%     --------------------------------------------------------------
+%%     |                     ?- magic(Hermione)                     |
+%%     --------------------------------------------------------------
+%%                 /              |                     \
+%% Hermione = _G1 /               | Hermione = _G1       \ Hermione = _G1
+%%               /                |                       \
+%% ---------------------  ------------------        ---------------------------------------
+%% | ?- house_elf(_G1) |  | ?- wizard(_G1) |        |            ?- witch(_G1)            |
+%% ---------------------  ------------------        ---------------------------------------
+%%             |                  |                     /     |                     \
+%% _G1 = dobby |                  |     _G1 = hermione /      | _G1 = 'McGonagall'   \ _G1 = rita_skeeter
+%%             |                  |                   /       |                       \
+%%           -----                X                -----    -----                    -----
+%%           |   |                                 |   |    |   |                    |   |
+%%           -----                                 -----    -----                    -----
 
 %% Exercise 2.3 Here is a tiny lexicon and mini grammar with only one rule which
 %% defines a sentence as consisting of five words: an article, a noun, a verb,
