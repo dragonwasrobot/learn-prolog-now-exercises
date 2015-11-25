@@ -46,7 +46,7 @@ magic(X) :- witch(X).
 %% 5. ?- magic(Hermione). ->
 %%    Hermione = dobby;
 %%    Hermione = hermione;
-%%    Hermione = %% 'McGonagall';
+%%    Hermione = 'McGonagall';
 %%    Hermione = rita_skeeter.
 
 %% Draw the search tree for the fifth query magic(Hermione).
