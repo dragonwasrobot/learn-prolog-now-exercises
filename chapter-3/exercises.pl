@@ -48,7 +48,11 @@ greater_than(succ(X),succ(Y)) :-
 %% T = tree(leaf(4), tree(leaf(2), leaf(1))).
 %% true
 
-%% !!! NOT DONE !!!
+swap(leaf(X), leaf(X)).
+
+swap(tree(X, Y), tree(SwappedY, SwappedX)) :-
+    swap(X, SwappedX),
+    swap(Y, SwappedY).
 
 %% Exercise 3.4
 %% In the lecture, we saw the predicate
