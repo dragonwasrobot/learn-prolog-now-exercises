@@ -33,7 +33,7 @@ second(X,List) :- List = [_,X|_].
 %%4.4 Write a predicate swap12(List1,List2) which checks whether List1 is identical to List2 ,
 %%except that the first two elements are exchanged.
 
-swap12(L1,L2) :- L1 = [L1a,L1b|_], L2 = [L1b,L1a|_]. 
+swap12(L1,L2) :- L1 = [L1a,L1b|T], L2 = [L1b,L1a|T].
 
 %% Exercise 4.5
 %% Suppose we are given a knowledge base with the following facts:
