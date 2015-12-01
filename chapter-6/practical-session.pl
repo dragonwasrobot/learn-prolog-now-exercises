@@ -209,9 +209,18 @@ set(Inlist,Outlist) :-
 
 % base case
 accFlatten([],L,L).
+accFlatten(X, AccList, [X|AccList]) :-
+    X \= [],
+    X \= [_|_].
 
 %% inductive case
-%% accFlatten([HList|TList], AccList, Flat) :-
+accFlatten([HList|TList], AccList, Flat) :-
+    accFlatten(TList, AccList, NewAccList),
+    accFlatten(HList, NewAccList, Flat).
+
+%% main
+flatten(List, Flat) :-
+    accFlatten(List, [], Flat).
 
 %% !!! TO DO !!!
 
