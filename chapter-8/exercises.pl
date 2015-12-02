@@ -70,6 +70,7 @@ v(singular) --> [shoots].
 
 %% kanga(V,R,Q) --> roo(V,R),jumps(Q,Q),{marsupial(V,R,Q)}.
 
-kanga(V,R,Q) --> roo(V,R), jumps(Q,Q), {marsupial(V,R,Q)}.
-
-%% I don't understand the question :/
+kanga(V, R, Q, A, C) :-
+    roo(V, R, A, B),
+    jumps(Q, Q, B, C),
+    marsupial(V, R, Q).
