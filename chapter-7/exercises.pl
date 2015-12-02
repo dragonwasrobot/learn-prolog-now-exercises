@@ -17,18 +17,54 @@ wiggle --> [toot].
 wiggle --> wiggle,wiggle.
 %% Write down the ordinary Prolog rules that correspond to these DCG rules.
 
-%% s --> foo bar wiggle
-%% foo --> choo
-%% foo --> foo foo
-%% bar --> mar zar
-%% mar --> me my
-%% me --> i
-%% my --> am
-%% zar --> blar car
-%% blar --> a
-%% car --> train
-%% wiggle --> toot
-%% wiggle --> wiggle wiggle
+%% s --> foo, bar, wiggle.
+s(A, D) :-
+    foo(A, B),
+    bar(B, C),
+    wiggle(C, D).
+
+%% foo --> [choo].
+foo([choo | A], A).
+
+%% foo --> foo, foo.
+foo(A, C) :-
+    foo(A, B),
+    foo(B, C).
+
+%% bar --> mar, zar.
+bar(A, C) :-
+    mar(A, B),
+    zar(B, C).
+
+%% mar --> me, my.
+mar(A, C) :-
+    me(A, B),
+    my(B, C).
+
+%% me --> [i].
+me([i | A], A).
+
+%% my --> [am].
+my([am | A], A).
+
+%% zar -> blar, car.
+zar(A, C) :-
+    blar(A, B),
+    car(B, C).
+
+%% blar -> [a].
+blar([a | A], A).
+
+%% car --> [train].
+car([train | A], A).
+
+%% wiggle --> [toot].
+wiggle([toot | A], A).
+
+%% wiggle --> wiggle, wiggle.
+wiggle(A, C) :-
+    wiggle(A, B),
+    wiggle(B, C).
 
 %% What are the first three responses that Prolog gives to the query s(X,[])?
 %% ?- s(X,[]).
