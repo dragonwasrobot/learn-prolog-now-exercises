@@ -16,7 +16,7 @@
 %% ?- 7-2 =\= 9-2 -> true
 %% ?- p == 'p' -> true
 %% ?- p =\= 'p' -> error
-%% ?- vincent == VAR -> VAR = vincent.
+%% ?- vincent == VAR -> false.
 %% ?- vincent=VAR,VAR==vincent -> VAR = vincent.
 
 %% Exercise 9.2
