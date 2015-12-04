@@ -95,16 +95,16 @@ termtype(Term,term) :-
 %% ?- groundterm(french(whopper,X)).
 %% no
 
-%% convert complex term to list and run through list and check if each element
-%% is nonvar.
+%% convert complex term to list of its arguments and run through list and check
+%% if each element is also a groundterm.
 
 groundterm(Term) :-
   nonvar(Term),
-  Term =.. X,
+  Term =.. [_ | X],
   groundterm_in_list(X).
 
 groundterm_in_list([H|T]) :-
-  nonvar(H),
+  groundterm(H),
   groundterm_in_list(T).
 
 groundterm_in_list([]).
