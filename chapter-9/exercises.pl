@@ -123,9 +123,8 @@ groundterm_in_list([]).
 %% ?- X is_a witch. -> true.
 %% ?- harry and ron and hermione are friends. -> true
 %% ?- harry is_a wizard and likes quidditch. -> false
-%% ?- dumbledore is_a famous famous wizard. ->
+%% ?- dumbledore is_a famous famous wizard. -> true
 
-%% is_a(X, Witch).
-%% friends(and(and(hermione,ron),harry)).
-%% and(is_a(harry, Wizard), likes(quidditch)).
-%% is_a(dumbledore,famous(famous(Wizard))).
+%% is_a(X, witch).
+%% are(and(harry, and(ron, hermione)), friends).
+%% is_a(dumbledore, famous(famous(wizard))).
