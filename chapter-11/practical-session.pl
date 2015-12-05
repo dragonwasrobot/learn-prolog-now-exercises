@@ -25,12 +25,33 @@
 
 %% it should successively generate all eight subsets of [a,b,c].
 
+%% Generates all subsets of the given set (once each)
+
 %% base case
-subset([], []).
+subset_gen([], []).
 
 %% inductive case
-subset(Subset, [H | Set]) :- subset(Subset, Set).
-subset([H |Subset], [H | Set]) :- subset(Subset, Set).
+subset_gen(Subset, [H | Set]) :- subset_gen(Subset, Set).
+subset_gen([H |Subset], [H | Set]) :- subset_gen(Subset, Set).
+
+%% Checks if the first argument is a subset of the second
+
+%% base case
+subset_check([], _).
+
+%% inductive case
+subset_check([H | Subset], Set) :-
+    member(H, Set),
+    subset_check(Subset, Set).
+
+%% main
+subset(Subset, Set) :-
+    var(Subset),
+    subset_gen(Subset, Set).
+
+subset(Subset, Set) :-
+    nonvar(Subset),
+    subset_check(Subset, Set).
 
 %% 2. Using the subset predicate you have just written, and findall/3 , write a
 %% predicate powerset/2 that takes a set as its first argument, and returns the
