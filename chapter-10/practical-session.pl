@@ -69,9 +69,9 @@ max(X,Y,X).
 %% X = 3.
 
 %% max3 has been simplified too much, i.e. the query below is wrong.
-%% [trace]  ?- max(2,1,2).
-%%    Call: (7) max(2, 1, 2) ?
-%%    Exit: (7) max(2, 1, 2) ?
+%% [trace]  ?- max(1,2,1).
+%%    Call: (7) max(1, 2, 1) ?
+%%    Exit: (7) max(1, 2, 1) ?
 %% true.
 
 %% Ok, time for a burger. Try out all the methods discussed in the text for
