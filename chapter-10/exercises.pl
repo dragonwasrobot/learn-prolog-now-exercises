@@ -102,23 +102,22 @@ directTrain(nancy, metz).
 %% ?- route(forbach,metz,Route).
 %% Route = [forbach,freyming,stAvold,fahlquemont,metz].
 
+directPath(X, Y) :-
+    directTrain(X, Y).
+
+directPath(X, Y) :-
+    directTrain(Y, X).
+
 %% base case
-travelBetween(X, Y, [Y]) :- directTrain(X, Y), !.
+route(Y, Y, RevL, L) :-
+    reverse(RevL, L).
 
 %% inductive case
-travelBetween(X, Y, [Z | L]) :-
-  directTrain(X, Z), !,
-  travelBetween(Z, Y, L).
-
-myRoute(X, Y, [X | L]) :-
-  travelBetween(X, Y, L), !.
-myRoute(X, Y, [Y | L]) :-
-  travelBetween(Y, X, L), !.
+route(X, Y, RevL, L) :-
+    directPath(X, Z),
+    not(member(Z, RevL)),
+    route(Z, Y, [Z | RevL], L).
 
 %% main
 route(X, Y, L) :-
-  myRoute(X, Y, RevL),
-  reverse(RevL, L).
-
-%% Problem: This only works because the train connetions form a doubly linked
-%% list, if it was a proper graph the above algorithm wouldn't work.
+    route(X, Y, [X], L).
