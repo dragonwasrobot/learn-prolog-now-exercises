@@ -98,13 +98,19 @@ q(flab,blob).
 %% sigmares(3,6).
 
 %% base case
-mySigma(0, Sum, Sum).
+mySigma(0, Sum, Sum) :-
+    !.
+
+mySigma(N, Acc, Sum) :-
+    sigmares(N, NewSum),
+    Sum is Acc + NewSum,
+    !.
 
 %% inductive case
 mySigma(N, Acc, Sum) :-
-  is(DecN, -(N, 1)), !,
-  is(NewAcc, +(Acc, N)), !,
-  mySigma(DecN, NewAcc, Sum), !.
+  is(DecN, -(N, 1)),
+  is(NewAcc, +(Acc, N)),
+  mySigma(DecN, NewAcc, Sum).
 
 %% main
 :- dynamic sigmares/2.
