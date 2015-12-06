@@ -29,6 +29,7 @@ writeHouses :-
 
 addWordToDatabase(W) :-
   word(W, X),
+  retract(word(W, X)),
   Y is X + 1,
   assert( word(W, Y) ), !.
 
@@ -80,10 +81,6 @@ checkCharAndReadRest(Char, [Char | Chars] , InStream) :-
 %% false.
 
 %% partial output from ?- listing.
-word(foo, 1).
-word(bar, 1).
-word(baz, 1).
-word(bozz, 1).
 word(newline, 1).
 word(bozz, 2).
 word(bar, 2).
