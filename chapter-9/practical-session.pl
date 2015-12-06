@@ -185,18 +185,17 @@ checkSimpleTypes([Head | Tail]) :-
 printterm(Term, Indent) :-
   termtype(Term, complex_term),
   Term =.. [TermName | TermArguments],
+  not(checkSimpleTypes(TermArguments)),
   tab(Indent), write(TermName), write('('), nl,
   NewIndent is Indent + 2,
   iterateArguments(TermArguments, NewIndent),
   write(')').
 
-iterateArguments([], _).
-
-iterateArguments([Head | Tail], Indent) :-
-  Tail == [],
+iterateArguments([Head], Indent) :-
   printterm(Head, Indent).
 
 iterateArguments([Head | Tail], Indent) :-
+  Tail \= [],
   printterm(Head, Indent), nl,
   iterateArguments(Tail, Indent).
 
@@ -215,9 +214,6 @@ pptree(Term) :-
 %%       det(a)
 %%       n(woman))))
 %% true
-
-%% Note: it is possible to type ; and get other invalid answers out, an
-%% improvement would prune these so there would be only one true answer.
 
 %% In the practical session of Chapter 7, you were asked to write a DCG
 %% generating propositional logic formulas. The input you had to use was a bit
@@ -243,3 +239,4 @@ pptree(Term) :-
 %% ?- display(p implies q and not r).
 %% implies(p,and(q,not(r)))
 %% true.
+
