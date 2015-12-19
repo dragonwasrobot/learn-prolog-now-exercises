@@ -464,8 +464,8 @@ notUnifiable(X, Y) :- X \= Y.
 %% List  =  [X,t(Y)].
 
 %% Bit tricky:
-%% if \+ H = Term succeeds we know that the H and Term can be unified so we fail
-%% and go to the default to second myUnifiable and add H to List2.
+%% if \+ H = Term succeeds we know that the H and Term cannot be unified so we
+%% fail and go to the default to second myUnifiable and add H to List2.
 %% if it fails we use a cut (i.e. it can be unified) we make a cut so that we
 %% don't end up trying the second myUnifiable which would add it regardless to
 %% List2 even though it can't be unified.
