@@ -160,18 +160,10 @@ prefix(P,L) :- append(P,_,L).
 suffix(S,L) :- append(_,S,L).
 sublist(SubL,L) :- suffix(S,L), prefix(SubL,S).
 
-house(blue,japanese,Xc).
-house(red,english,snail).
-house(Za,spanish,jaguar).
-
-street(house(LCol,LNat,LPet),
-       house(MCol,MNat,MPet),
-       house(RCol,RNat,RPet)) :-
-  sublist([LCol,MCol,RCol],[green,red,blue]),
-  sublist([LNat,MNat,RNat],[japanese,english,spanish]),
-  sublist([LPet,MPet,RPet],[zebra,snail,jaguar]).
-
-%% Not quite as beautiful as I had hoped, since I had to derive the whole
-%% english is snailkeeper and japanese living the blue house rather than
-%% specifying it as is. Also the riddle seems to be too simple compared to the
-%% "original" Einstein's Puzzle.
+zebra_owner(ZebraOwner) :-
+    Street = [_, _, _],
+    member(house(red, englishman, _), Street),
+    member(house(_, spanish, jaguar), Street),
+    member(house(_, ZebraOwner, zebra), Street),
+    sublist([house(_, _, snail), house(_, japanese, _)], Street),
+    sublist([house(_, _, snail), house(blue, _, _)], Street).
