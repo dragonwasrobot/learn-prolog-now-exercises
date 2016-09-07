@@ -100,37 +100,13 @@ toptail(InList, OutList):-
 %% identical to List2, except that the first and last elements are
 %% exchanged. Hint: here's where append comes in useful again.
 
-%% Helper function
-
-%% equal
-%% base case
-equal([],[]).
-%% inductive case
-equal([H1|T1], [H1|T2]) :- equal(T1,T2).
-
-%% reverse
-%% base case
-accRev([],A,A).
-%% inductive case
-accRev([H|T],A,R) :- accRev(T,[H|A],R).
-%% main
-rev(L,R) :- accRev(L,[],R).
-
-chopOffEnds([_|T],Outlist) :-
-  rev(T, [_|RevOutlist]),
-  rev(RevOutlist,Outlist).
-
-%% Actual function
-
-%% swapfl(List1, List2)
-swapfl(List1,List2) :-
-  compareFirstLast(List1,List2),
-  compareFirstLast(List2,List1),
-  chopOffEnds(List1, Outlist1),
-  chopOffEnds(List2, Outlist2),
-  equal(Outlist1,Outlist2).
-
-compareFirstLast([H|T1],L2) :- rev(L2, [H|_]).
+%% As per strict interpretation of the question. Empty lists or lists with one
+%% element cannot be compared since they are missing the first and last element.
+%% Base case: fact - list with two elements have their elements swapped around.
+swapfl([X, Y], [Y, X]).
+%% Inductive case: The head and tail can be different but in between elements are
+%% same.
+swapfl([H1, X | T1], [H2, X | T2]):- swapfl([H1 | T1], [H2 | T2]).
 
 %% Exercise 6.4
 
