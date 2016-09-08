@@ -95,42 +95,21 @@ final(X,List) :-
 
 toptail(InList, OutList):-
     append([_|OutList],[_], InList).
+    
+%% Version without append
+toptail2([_|Tail], OutList):- reverse(Tail, [_|TailReversedRest]), reverse(TailReversedRest, OutList).
 
 %% 5. Write a predicate swapfl(List1,List2) which checks whether List1 is
 %% identical to List2, except that the first and last elements are
 %% exchanged. Hint: here's where append comes in useful again.
 
-%% Helper function
-
-%% equal
-%% base case
-equal([],[]).
-%% inductive case
-equal([H1|T1], [H1|T2]) :- equal(T1,T2).
-
-%% reverse
-%% base case
-accRev([],A,A).
-%% inductive case
-accRev([H|T],A,R) :- accRev(T,[H|A],R).
-%% main
-rev(L,R) :- accRev(L,[],R).
-
-chopOffEnds([_|T],Outlist) :-
-  rev(T, [_|RevOutlist]),
-  rev(RevOutlist,Outlist).
-
-%% Actual function
-
-%% swapfl(List1, List2)
-swapfl(List1,List2) :-
-  compareFirstLast(List1,List2),
-  compareFirstLast(List2,List1),
-  chopOffEnds(List1, Outlist1),
-  chopOffEnds(List2, Outlist2),
-  equal(Outlist1,Outlist2).
-
-compareFirstLast([H|T1],L2) :- rev(L2, [H|_]).
+swapfl([], []).
+swapfl([First1|Tail1], [First2|Tail2]):-
+	reverse(Tail1, [Last1|Rest1]),
+	reverse(Tail2, [Last2|Rest2]),
+	First1 = Last2,
+	Last1 = First2,
+	Rest1 = Rest2.
 
 %% Exercise 6.4
 
