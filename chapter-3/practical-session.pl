@@ -43,7 +43,17 @@
 %% simple queries as descend(martha,laura), Prolog will not terminate. Step
 %% through an example, using trace, to confirm this.
 
-%% Should insert trace output.
+%% [trace]  ?- descend(martha, laura).
+%%    Call: (7) descend(martha, laura) ? creep
+%%    Call: (8) descend(_G1217, laura) ? creep
+%%    Call: (9) descend(_G1217, laura) ? creep
+%%    Call: (10) descend(_G1217, laura) ? creep
+%%    Call: (11) descend(_G1217, laura) ? creep
+%%    Call: (12) descend(_G1217, laura) ? creep
+%%    Call: (13) descend(_G1217, laura) ? creep
+%%    Call: (14) descend(_G1217, laura) ? creep
+%%    Call: (15) descend(_G1217, laura) ? creep
+%%    ...
 
 %% But wait! There are two more variants of descend1.pl that we have not considered. For a start, we could have written the recursive clause as follows:
 
