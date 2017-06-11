@@ -96,7 +96,6 @@ r --> [b].
 
 %% nonterminals
 s --> [].
-s --> l,r,r.
 s --> l,s,r,r.
 
 %% terminals
