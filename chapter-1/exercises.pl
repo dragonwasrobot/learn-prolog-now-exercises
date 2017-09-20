@@ -88,6 +88,8 @@ loves(mia, X) :- goodDancer(X).
 %% 6. Jules eats anything that is nutritious or tasty.
 eats(jules, X) :- nutritious(X).
 eats(jules, X) :- tasty(X).
+%% Alternatively,
+eats2(jules, X) :- nutritious(X); tasty(X).
 
 %% Exercise 1.5
 
