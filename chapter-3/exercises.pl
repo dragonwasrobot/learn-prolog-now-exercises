@@ -12,8 +12,8 @@
 %% fail.
 
 directlyIn(katarina, olga).
-directlyIn(olga, natsha).
-directlyIn(natsha, irina).
+directlyIn(olga, natasha).
+directlyIn(natasha, irina).
 
 in(X,Y) :- directlyIn(X,Y).
 in(X,Y) :-
