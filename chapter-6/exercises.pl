@@ -62,20 +62,7 @@ swap12([X, Y | List], [Y, X | List]).
 %% 3. Write a predicate final(X,List) which checks whether X is the last element
 %% of List.
 
-%% Helper function
-
-%% reverse
-%% base case
-accRev([],A,A).
-%% inductive case
-accRev([H|T],A,R) :- accRev(T,[H|A],R).
-%% main
-rev(L,R) :- accRev(L,[],R).
-
-%% Actual function
-final([],[]).
-final(X,List) :-
-  rev(List, [X|_]).
+final(X, List) :- append(_, [X], List).
 
 %% 4. Write a predicate toptail(InList,Outlist) which says `no' if inlist is a
 %% list containing fewer than 2 elements, and which deletes the first and the
