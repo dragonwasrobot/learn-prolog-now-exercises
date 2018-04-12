@@ -106,7 +106,7 @@ directPath(X, Y) :-
     directTrain(X, Y).
 
 directPath(X, Y) :-
-    directTrain(Y, X).
+    directTrain(Y, X),!.
 
 %% base case
 route(Y, Y, RevL, L) :-
