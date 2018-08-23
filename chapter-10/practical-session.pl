@@ -454,7 +454,9 @@ neg(Goal).
 notUnifiable(X, Y) :- neg(X = Y).
 
 %% Third, write it using a cut-fail combination. Don’t use = and don’t use \+.
-notUnifiable(X, Y) :- X \= Y.
+notUnifiable(X,X) :-
+	!,fail.
+notUnifiable(_,_).
 
 %% Define a predicate unifiable(List1,Term,List2) where List2 is the list of all
 %% members of List1 that unify with Term. The elements of List2 should not be
