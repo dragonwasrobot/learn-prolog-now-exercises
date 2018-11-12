@@ -27,6 +27,9 @@
 
 %% Generates all subsets of the given set (once each)
 
+%% There are two strategies.
+%% Strategy 1: list all subset then check if first argument is in the list.
+
 %% base case
 subset_gen([], []).
 
@@ -52,6 +55,47 @@ subset(Subset, Set) :-
 subset(Subset, Set) :-
     nonvar(Subset),
     subset_check(Subset, Set).
+    
+%% Strategy 2: check each element of subset if is a member of superset,
+%% remove it from both sets, then continue.
+
+%% This helpper predicate assumes that the input set already is sorted and
+%% doesn't have duplicated items.
+
+%% base case
+remove(_,[],_).
+
+%% inductive cases
+remove(X,[X|Tail],Tail) :- !.
+remove(X,[_|Tail],Result) :- remove(X,Tail,Result).
+
+%% base case
+subset([],[]).
+subset([],[_|_]).
+
+%% inductive case
+subset([Head|Tail],Super) :-
+	member(Head,Super),
+	remove(Head,Super,Reduced),
+	subset(Tail,Reduced).
+
+%% This is to standardize superset for below cases.
+%% subsetList([d,c,d],[d,b,d,c]).
+%% subsetList(X,[d,b,d,c]).
+subsetList(Sub,Super) :-
+	setof(X,member(X,Super),Stdz),
+	proxySubset(Sub,Stdz).
+
+%% This proxy is to split cases and standardize subset in case
+%% the subset is provided.
+proxySubset(Sub,Super) :-
+	var(Sub),
+	subset(Sub,Super).
+%% This is for the case of proxySubset([d,c,d],[b,c,d]).
+proxySubset(Sub,Super) :-
+	nonvar(Sub),
+	setof(X,member(X,Sub),Stdz),
+	subset(Stdz,Super).
 
 %% 2. Using the subset predicate you have just written, and findall/3 , write a
 %% predicate powerset/2 that takes a set as its first argument, and returns the
