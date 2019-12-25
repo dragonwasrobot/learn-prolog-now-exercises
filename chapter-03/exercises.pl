@@ -127,5 +127,12 @@ travelBetween(X,Y) :-
   directTrain(Z,X),
   travelBetween(Z, Y).
 
+%% alternative: 
+directTrain(X,Y) :- directTrain(Y,X).
+travelBetween(X,Y) :- directTrain(X,Y).
+travelBetween(X,Y) :-
+  directTrain(X,Z),
+  travelBetween(Z,Y).
+
 %% You will end up in infinite loops since you can go both directions, so it is
 %% possible to keep calling the same function over and over.
