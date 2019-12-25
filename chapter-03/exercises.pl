@@ -31,6 +31,11 @@ in(X,Y) :-
 greater_than(succ(_),0).
 greater_than(succ(X),succ(Y)) :-
   greater_than(X,Y).
+  
+%% alternative: 
+greater_than(succ(X), X).
+greater_than(succ(Y), X) :-
+    greater_than(Y, X).
 
 %% Exercise 3.3
 %% Binary trees are trees where all internal nodes have exactly two childres. The
