@@ -90,6 +90,10 @@ toptail2([_|Tail], OutList):- reverse(Tail, [_|TailReversedRest]), reverse(TailR
 %% identical to List2, except that the first and last elements are
 %% exchanged. Hint: here's where append comes in useful again.
 
+append_swapfl(InList,OutList) :-
+    append([F|Mid],[L], InList),
+    append([L|Mid],[F], OutList).
+    
 swapfl([], []).
 swapfl([First1|Tail1], [First2|Tail2]):-
 	reverse(Tail1, [Last1|Rest1]),
