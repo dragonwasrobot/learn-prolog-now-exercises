@@ -28,12 +28,13 @@
 %%[[1,2],[3,4]|[5,6,7]]     correct - 5 elements
 
 %%Exercise  4.3 Write a predicate second(X,List) which checks whether X is the second element of List .
-second(X,List) :- List = [_,X|_].
+
+second(X,[_, X|_]).
 
 %%4.4 Write a predicate swap12(List1,List2) which checks whether List1 is identical to List2 ,
 %%except that the first two elements are exchanged.
 
-swap12(L1,L2) :- L1 = [L1a,L1b|T], L2 = [L1b,L1a|T].
+swap12([A,B|T],[B,A|T]).
 
 %% Exercise 4.5
 %% Suppose we are given a knowledge base with the following facts:
