@@ -23,8 +23,7 @@ accMin([H|T],A,Min) :-
     H >= A,
     accMin(T,A,Min).
 
-min(List, Min) :-
-  List = [H|_],
+min([H|List], Min) :-
   accMin(List, H, Min).
 
 %% 2. In mathematics, an n-dimensional vector is a list of numbers of length
