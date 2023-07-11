@@ -182,15 +182,14 @@ rev(L,R) :- accRev(L,[],R).
 accSet([],L,L).
 %% inductive case
 accSet([X|Inlist], AccList, Outlist) :-
-  not(member(X,AccList)),
-  accSet(Inlist,[X|AccList],Outlist).
-accSet([X|Inlist], AccList, Outlist) :-
   member(X,AccList),
   accSet(Inlist,AccList,Outlist).
+accSet([X|Inlist], AccList, Outlist) :-
+  accSet(Inlist,[X|AccList],Outlist).
 %% main
 set(Inlist,Outlist) :-
-  rev(TempOutlist, Outlist),
-  accSet(Inlist,[],TempOutlist).
+  accSet(Inlist,[],TempOutlist),
+  rev(TempOutlist, Outlist).
 
 %% 3. We `flatten' a list by removing all the square brackets around any lists it
 %% contains as elements, and around any lists that its elements contain as
